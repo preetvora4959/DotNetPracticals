@@ -1,100 +1,71 @@
 ﻿using System;
 
-// Interface
-interface IPayroll
+class Student
 {
-    void CalculateSalary();
-}
-
-// Base Class
-class Employee
-{
-    protected int empId;
-    protected string empName;
-    protected double basicSalary;
+    // Private Data Members
+    private int studentId;
+    private string studentName;
+    private string course;
+    private double admissionFee;
 
     // Parameterized Constructor
-    public Employee(int id, string name, double salary)
+    public Student(int id, string name, string courseName, double fee)
     {
-        empId = id;
-        empName = name;
-        basicSalary = salary;
+        studentId = id;
+        studentName = name;
+        course = courseName;
+        admissionFee = fee;
     }
 
-    // Virtual Method (Polymorphism)
-    public virtual void DisplayDetails()
+    // Display Student Details
+    public void DisplayAdmissionDetails()
     {
-        Console.WriteLine("\n============== EMPLOYEE DETAILS ==============");
-        Console.WriteLine("Employee ID      : " + empId);
-        Console.WriteLine("Employee Name    : " + empName);
-        Console.WriteLine("Basic Salary     : Rs. " + basicSalary);
-    }
-}
-
-// Derived Class
-class Payroll : Employee, IPayroll
-{
-    private double bonus;
-    private double totalSalary;
-
-    // Constructor
-    public Payroll(int id, string name, double salary, double bonus)
-        : base(id, name, salary)
-    {
-        this.bonus = bonus;
+        Console.WriteLine("\n========== STUDENT ADMISSION DETAILS ==========");
+        Console.WriteLine("Student ID      : " + studentId);
+        Console.WriteLine("Student Name    : " + studentName);
+        Console.WriteLine("Course          : " + course);
+        Console.WriteLine("Admission Fee   : Rs. " + admissionFee);
     }
 
-    // Interface Method
-    public void CalculateSalary()
+    // Scholarship Check
+    public void CheckScholarship()
     {
-        totalSalary = basicSalary + bonus;
-    }
-
-    // Method Overriding (Polymorphism)
-    public override void DisplayDetails()
-    {
-        base.DisplayDetails();
-
-        Console.WriteLine("Bonus            : Rs. " + bonus);
-        Console.WriteLine("----------------------------------------------");
-        Console.WriteLine("Total Salary     : Rs. " + totalSalary);
-        Console.WriteLine("----------------------------------------------");
+        if (admissionFee >= 50000)
+            Console.WriteLine("Scholarship     : Eligible");
+        else
+            Console.WriteLine("Scholarship     : Not Eligible");
     }
 }
 
-// Main Class
 class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("==================================================");
-        Console.WriteLine("         EMPLOYEE PAYROLL MANAGEMENT SYSTEM");
-        Console.WriteLine("==================================================");
+        Console.WriteLine("========== STUDENT ADMISSION MANAGEMENT ==========\n");
 
-        Console.Write("Enter Employee ID      : ");
+        Console.Write("Enter Student ID      : ");
         int id = Convert.ToInt32(Console.ReadLine());
 
-        Console.Write("Enter Employee Name    : ");
+        Console.Write("Enter Student Name    : ");
         string name = Console.ReadLine();
 
-        Console.Write("Enter Basic Salary     : ");
-        double salary = Convert.ToDouble(Console.ReadLine());
+        Console.Write("Enter Course Name     : ");
+        string course = Console.ReadLine();
 
-        Console.Write("Enter Bonus            : ");
-        double bonus = Convert.ToDouble(Console.ReadLine());
+        Console.Write("Enter Admission Fee   : ");
+        double fee = Convert.ToDouble(Console.ReadLine());
 
         // Object Creation
-        Payroll emp = new Payroll(id, name, salary, bonus);
+        Student s1 = new Student(id, name, course, fee);
 
-        // Interface Method Call
-        emp.CalculateSalary();
+        // Display Details
+        s1.DisplayAdmissionDetails();
 
-        // Overridden Method Call
-        emp.DisplayDetails();
+        // Check Scholarship
+        s1.CheckScholarship();
 
-        Console.WriteLine("\nPayroll Generated Successfully!");
-        Console.WriteLine("==================================================");
-        Console.WriteLine("Press any key to exit...");
+        Console.WriteLine("\nAdmission Process Completed Successfully.");
+        Console.WriteLine("\nPress any key to exit...");
         Console.ReadKey();
     }
 }
