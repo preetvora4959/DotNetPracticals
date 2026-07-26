@@ -1,4 +1,5 @@
 <Solution>
   <Project Path="Practical1_StudentAdmission/Practical1_StudentAdmission.csproj" />
   <Project Path="Practical2_EmployeePayroll/Practical2_EmployeePayroll.csproj" Id="b853948c-2f06-4ee8-ace6-3479d2a821d4" />
+  <Project Path="Practical3_EventBudget/Practical3_EventBudget.csproj" Id="7628c179-7430-4ccd-8e1b-c67e5c7eba57" />
 </Solution>
