@@ -1,0 +1,34 @@
+﻿
+@model WebApplication1Practical8_InventoryManagement.Models.Product
+
+@{
+    ViewBag.Title = "Add Product";
+}
+
+<div class="page-card">
+    <h2>Add New Product</h2>
+    <p style="color: #718198;">Enter the details below to add a new product to inventory.</p>
+
+    @using (Html.BeginForm())
+    {
+        <div class="form-group">
+            <label>Product Name</label>
+            @Html.TextBoxFor(m => m.ProductName, new { @class = "form-control", placeholder = "Enter product name", required = "required" })
+        </div>
+
+        <div class="form-group">
+            <label>Quantity</label>
+            @Html.TextBoxFor(m => m.Quantity, new { @class = "form-control", type = "number", min = "0", placeholder = "Enter quantity", required = "required" })
+        </div>
+
+        <div class="form-group">
+            <label>Price (₹)</label>
+            @Html.TextBoxFor(m => m.Price, new { @class = "form-control", type = "number", min = "0", step = "0.01", placeholder = "Enter price", required = "required" })
+        </div>
+
+        <br />
+
+        <button type="submit" class="btn btn-primary">Save Product</button>
+        @Html.ActionLink("Back to Inventory", "Index", null, new { @class = "btn btn-default" })
+    }
+</div>
