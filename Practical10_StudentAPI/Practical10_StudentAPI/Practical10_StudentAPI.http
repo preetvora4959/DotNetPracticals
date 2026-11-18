@@ -1,0 +1,44 @@
+
+@Practical10_StudentAPI_HostAddress = https://localhost:7005
+
+### Get All Students
+GET {{Practical10_StudentAPI_HostAddress}}/api/Students
+Accept: application/json
+
+###
+
+### Get Student By ID
+GET {{Practical10_StudentAPI_HostAddress}}/api/Students/4
+Accept: application/json
+
+###
+
+### Add New Student
+POST {{Practical10_StudentAPI_HostAddress}}/api/Students
+Content-Type: application/json
+
+{
+  "name": "Test Student",
+  "email": "test@gmail.com",
+  "course": "Computer Engineering",
+  "semester": 5
+}
+
+###
+
+### Update Student
+PUT {{Practical10_StudentAPI_HostAddress}}/api/Students/4
+Content-Type: application/json
+
+{
+  "id": 4,
+  "name": "Preet Vora Updated",
+  "email": "preet@gmail.com",
+  "course": "Computer Engineering",
+  "semester": 6
+}
+
+###
+
+### Delete Student
+DELETE {{Practical10_StudentAPI_HostAddress}}/api/Students/5
