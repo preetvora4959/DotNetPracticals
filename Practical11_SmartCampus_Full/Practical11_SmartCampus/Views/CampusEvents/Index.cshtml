@@ -1,0 +1,10 @@
+@model IEnumerable<CampusEvent>
+@{ ViewData["Title"] = "Campus Events"; }
+<div class="page-heading"><div><p class="eyebrow">CAMPUS CALENDAR</p><h1>Campus Events</h1><p>Discover activities and manage upcoming campus events.</p></div><a class="btn btn-primary" asp-action="Create">+ Add Event</a></div>
+<div class="event-grid">
+@foreach (var item in Model)
+{
+    <article class="event-card"><div class="event-date"><strong>@item.EventDate.ToString("dd")</strong><span>@item.EventDate.ToString("MMM yyyy")</span></div><div class="event-content"><span class="eyebrow">CAMPUS EVENT</span><h2>@item.EventName</h2><p class="event-venue">⌖ @item.Venue</p><p>@item.Description</p><div class="event-actions"><a asp-action="Edit" asp-route-id="@item.Id">Edit event</a><form asp-action="Delete" asp-route-id="@item.Id" method="post" onsubmit="return confirm('Delete this event?');"><button class="link-button danger-link" type="submit">Delete</button></form></div></div></article>
+}
+</div>
+@if (!Model.Any()) { <div class="panel empty">No campus events have been added yet.</div> }

@@ -1,0 +1,4 @@
+@model ServiceRequest
+@{ ViewData["Title"] = "New Service Request"; }
+<div class="page-heading"><div><p class="eyebrow">CAMPUS SUPPORT</p><h1>Submit a Service Request</h1><p>Share the issue and our campus team will take it forward.</p></div></div>
+<div class="panel form-panel"><form asp-action="Create" method="post"><partial name="_Form" model="Model" /><div class="form-actions"><a class="btn btn-muted" asp-action="Index">Cancel</a><button class="btn btn-primary" type="submit">Submit Request</button></div></form></div>

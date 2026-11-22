@@ -1,0 +1,8 @@
+@model CampusEvent
+<div asp-validation-summary="ModelOnly" class="validation-summary"></div>
+<div class="form-grid">
+    <div class="field full"><label asp-for="EventName"></label><input asp-for="EventName" placeholder="Enter event name" /><span asp-validation-for="EventName"></span></div>
+    <div class="field"><label asp-for="Venue"></label><input asp-for="Venue" placeholder="Enter venue" /><span asp-validation-for="Venue"></span></div>
+    <div class="field"><label asp-for="EventDate"></label><input asp-for="EventDate" type="date" /><span asp-validation-for="EventDate"></span></div>
+    <div class="field full"><label asp-for="Description"></label><textarea asp-for="Description" rows="4" placeholder="Describe the event"></textarea><span asp-validation-for="Description"></span></div>
+</div>

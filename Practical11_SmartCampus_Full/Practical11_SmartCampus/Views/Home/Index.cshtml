@@ -1,0 +1,45 @@
+@{
+    ViewData["Title"] = "Dashboard";
+    var recent = ViewBag.RecentRequests as List<ServiceRequest> ?? new();
+    var events = ViewBag.UpcomingEvents as List<CampusEvent> ?? new();
+}
+<section class="hero">
+    <div>
+        <p class="eyebrow">CAMPUS SERVICES · ONE PLACE</p>
+        <h1>Welcome, Preet Vora</h1>
+        <p>Smart Campus Service Portal</p>
+        <p class="hero-copy">A simple portal to manage student service requests and campus events.</p>
+        <div class="hero-actions">
+            <a class="btn btn-light" asp-controller="ServiceRequests" asp-action="Create">+ Submit a Request</a>
+            <a class="btn btn-outline-light" asp-controller="CampusEvents" asp-action="Index">Explore Events</a>
+        </div>
+    </div>
+    <div class="hero-art"><div class="art-circle">SC</div><span>Connected campus<br />Better experience</span></div>
+</section>
+<section class="stats-grid">
+    <div class="stat-card"><span>Total Requests</span><strong>@ViewBag.TotalRequests</strong><small>All submitted requests</small></div>
+    <div class="stat-card"><span>Pending</span><strong class="orange">@ViewBag.PendingRequests</strong><small>Waiting for action</small></div>
+    <div class="stat-card"><span>In Progress</span><strong class="blue">@ViewBag.InProgressRequests</strong><small>Currently being handled</small></div>
+    <div class="stat-card"><span>Resolved</span><strong class="green">@ViewBag.ResolvedRequests</strong><small>Successfully completed</small></div>
+</section>
+<section class="two-col">
+    <div class="panel">
+        <div class="panel-heading"><div><p class="eyebrow">LATEST ACTIVITY</p><h2>Recent Service Requests</h2></div><a class="text-link" asp-controller="ServiceRequests" asp-action="Index">View all →</a></div>
+        @if (recent.Count == 0) { <p class="empty">No requests yet.</p> }
+        else
+        {
+            <div class="table-wrap"><table><thead><tr><th>Student</th><th>Issue</th><th>Status</th></tr></thead><tbody>
+            @foreach (var item in recent) { <tr><td>@item.StudentName</td><td>@item.Issue</td><td><span class="status @item.Status.Replace(" ", "").ToLowerInvariant()">@item.Status</span></td></tr> }
+            </tbody></table></div>
+        }
+    </div>
+    <div class="panel">
+        <div class="panel-heading"><div><p class="eyebrow">WHAT'S HAPPENING</p><h2>Upcoming Events</h2></div><a class="text-link" asp-controller="CampusEvents" asp-action="Index">View all →</a></div>
+        @if (events.Count == 0) { <p class="empty">No upcoming events.</p> }
+        else
+        {
+            @foreach (var item in events) { <div class="event-mini"><div class="date-tile"><strong>@item.EventDate.ToString("dd")</strong><span>@item.EventDate.ToString("MMM")</span></div><div><strong>@item.EventName</strong><p>@item.Venue</p></div></div> }
+        }
+    </div>
+</section>
+<div class="api-note"><strong>REST API available</strong><span>GET /api/CampusApi/requests · POST /api/CampusApi/requests · GET /api/CampusApi/events</span><a href="/api/CampusApi/requests" target="_blank">Open API response ↗</a></div>

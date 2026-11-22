@@ -1,0 +1,9 @@
+@model ServiceRequest
+<div asp-validation-summary="ModelOnly" class="validation-summary"></div>
+<div class="form-grid">
+    <div class="field"><label asp-for="StudentName"></label><input asp-for="StudentName" placeholder="Enter student name" /><span asp-validation-for="StudentName"></span></div>
+    <div class="field"><label asp-for="Department"></label><select asp-for="Department"><option value="">Select department</option><option>Computer Engineering</option><option>Information Technology</option><option>Mechanical Engineering</option><option>Civil Engineering</option><option>Electrical Engineering</option><option>Other</option></select><span asp-validation-for="Department"></span></div>
+    <div class="field"><label asp-for="Issue"></label><select asp-for="Issue"><option value="">Select issue</option><option>Wi-Fi Connectivity</option><option>Classroom Equipment</option><option>Library Access</option><option>Hostel Maintenance</option><option>Transport</option><option>Other</option></select><span asp-validation-for="Issue"></span></div>
+    <div class="field"><label asp-for="Status"></label><select asp-for="Status"><option>Pending</option><option>In Progress</option><option>Resolved</option></select><span asp-validation-for="Status"></span></div>
+    <div class="field full"><label asp-for="Description"></label><textarea asp-for="Description" rows="4" placeholder="Describe the issue in detail"></textarea><span asp-validation-for="Description"></span></div>
+</div>
